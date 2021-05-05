@@ -1,0 +1,43 @@
+<div *ngIf="permit" class="container border p-3 rounded">
+    <div class="row">
+        <div class="col-4">
+            <img src="{{'data:image/png;base64,' + permit.codeQRBase64}}" class="float-start img-thumbnail w-50">
+        </div>
+    </div>
+    <hr class="mt-4 mb-3"/>
+    <div class="row mt-2">
+        <div class="col">
+            <p>Permit assigned to: {{permit.prenom}} {{permit.nom}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Permit type: {{permit.typePermis}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p *ngIf="permit.typePermis == 'TEST'">Expires on: {{permit.dateExpiration | date:'yyyy-MM-dd'}}</p>
+            <p *ngIf="permit.typePermis == 'VACCIN'">Expires on: Never</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Age category: {{permit.categorieAge}}</p>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <button class="btn btn-primary mr-2">Send as image to my email</button>
+            <button class="btn btn-primary mr-2">Send as PDF to my email</button>
+            <button *ngIf="permit.typePermis == 'TEST'" class="btn btn-primary" (click)="renew()">Renew</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="!permit" class="container border p-3 rounded alert alert-danger">
+    <div class="row">
+        <div class="col-6 mt-2">
+            <p>There has been an error, we couldn't get your permit data</p>
+        </div>
+    </div>
+</div>
