@@ -1,8 +1,12 @@
 package com.tp2.service.email;
 
+import com.google.zxing.WriterException;
 import com.tp2.service.QRService;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+
+import javax.mail.MessagingException;
+import java.io.IOException;
 
 public class QRMail extends Mail {
 
@@ -18,7 +22,7 @@ public class QRMail extends Mail {
     }
 
     @Override
-    protected void buildEmail(MimeMessageHelper messageHelper) throws Exception {
+    protected void buildEmail(MimeMessageHelper messageHelper) throws IOException, WriterException, MessagingException {
         super.buildEmail(messageHelper);
         messageHelper.addAttachment(attachmentFilename, qrService.QRCodeDataSource(QRData));
     }

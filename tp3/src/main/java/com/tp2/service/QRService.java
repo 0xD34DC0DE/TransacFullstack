@@ -20,7 +20,7 @@ public class QRService {
     private static final String format = "PNG";
     private static final String mimeType = "image/png";
 
-    public ByteArrayDataSource QRCodeDataSource(String data) throws Exception {
+    public ByteArrayDataSource QRCodeDataSource(String data) throws IOException, WriterException {
         ByteArrayOutputStream byteArrayOutputStream = getMatrixByteArrayOutputStream(data);
         byteArrayOutputStream.close();
 

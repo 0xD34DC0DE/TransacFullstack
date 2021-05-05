@@ -1,10 +1,13 @@
 package com.tp2.service.email;
 
+import com.google.zxing.WriterException;
 import lombok.Data;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.IOException;
 
 @Data
 public class Mail {
@@ -24,13 +27,13 @@ public class Mail {
         this.mimeMessage = this.javaMailSender.createMimeMessage();
     }
 
-    public void send() throws Exception {
+    public void send() throws MessagingException, IOException, WriterException {
         MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true);
         buildEmail(message);
         javaMailSender.send(mimeMessage);
     }
 
-    protected void buildEmail(MimeMessageHelper messageHelper) throws Exception {
+    protected void buildEmail(MimeMessageHelper messageHelper) throws MessagingException, IOException, WriterException {
         messageHelper.setTo(mailTo);
         messageHelper.setSubject(subject);
         messageHelper.setText(body);

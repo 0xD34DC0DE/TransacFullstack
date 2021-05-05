@@ -28,11 +28,22 @@
     </div>
     <div class="row mt-2">
         <div class="col">
-            <button class="btn btn-primary mr-2">Send as image to my email</button>
-            <button class="btn btn-primary mr-2">Send as PDF to my email</button>
+            <button class="btn btn-primary mr-2" (click)="sendImage()">Send as image to my email</button>
+            <button class="btn btn-primary mr-2" (click)="sendPdf()">Send as PDF to my email</button>
             <button *ngIf="permit.typePermis == 'TEST'" class="btn btn-primary" (click)="renew()">Renew</button>
         </div>
     </div>
+    <div *ngIf="emailResult != null" class="container">
+        <div class="row">
+            <div *ngIf="!emailResult" class="col-6 mt-2 border p-3 rounded alert alert-danger">
+                <p>There has been an error sending to your email</p>
+            </div>
+            <div *ngIf="emailResult" class="col-6 mt-2 border p-3 rounded alert alert-success">
+                <p>Email successfuly sent!</p>
+            </div>
+        </div>
+    </div>
+    <app-error-message></app-error-message>
 </div>
 <div *ngIf="!permit" class="container border p-3 rounded alert alert-danger">
     <div class="row">

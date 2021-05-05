@@ -19,6 +19,7 @@ import { VerifyPermisComponent } from './components/verify-permis/verify-permis.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,7 @@ import { VerifyPermisComponent } from './components/verify-permis/verify-permis.
     ChildrenRegisterComponent,
     ErrorMessageComponent,
     NotFoundComponent,
-    VerifyPermisComponent
+    VerifyPermisComponent,
   ],
   imports: [
     BrowserModule,

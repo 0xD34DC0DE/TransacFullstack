@@ -3,8 +3,8 @@ package com.tp2.controller;
 import com.tp2.model.Citoyen;
 import com.tp2.model.Enfant;
 import com.tp2.model.Permis;
-import com.tp2.model.queryModel.Credentials;
-import com.tp2.model.queryModel.EnfantRegisterData;
+import com.tp2.model.web.query.Credentials;
+import com.tp2.model.web.query.EnfantRegisterData;
 import com.tp2.model.web.query.CitoyenRegisteringData;
 import com.tp2.model.web.response.*;
 import com.tp2.service.CitoyenService;
@@ -66,6 +66,9 @@ public class UserController extends ControllerHelper {
                 citoyenRegisteringData.getCourriel(),
                 citoyenRegisteringData.getNumeroTelephone(),
                 citoyenRegisteringData.getVilleResidence());
+
+        if(newCitoyen.getCategoryAge() == Citoyen.CategoryAge.ENFANT)
+            return new ResponseEntity<>(UserData.asErrorMessage("A parent account is needed to create this account"), HttpStatus.OK);
 
         Citoyen createdCitoyen;
         ResponseEntity<PermisData> permisDataResponseEntity = null;

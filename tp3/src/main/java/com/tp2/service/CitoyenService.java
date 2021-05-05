@@ -2,7 +2,6 @@ package com.tp2.service;
 
 import com.tp2.model.Citoyen;
 import com.tp2.model.Permis;
-import com.tp2.model.responseEntity.CitoyenMinisterData;
 import com.tp2.model.web.response.MinisterData;
 import com.tp2.repository.CitoyenRepo;
 

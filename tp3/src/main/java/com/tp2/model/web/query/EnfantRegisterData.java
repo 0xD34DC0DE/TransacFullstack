@@ -1,4 +1,4 @@
-package com.tp2.model.queryModel;
+package com.tp2.model.web.query;
 
 import lombok.Data;
 
