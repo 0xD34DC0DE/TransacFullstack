@@ -1,0 +1,64 @@
+<div class="container h-100">
+    <div class="h-100 row align-items-center justify-content-center">
+        <div class="col-12 align-self-center">
+            <div class="container-fluid border p-3 rounded">
+
+                <div *ngIf="!userData.typePermis" class="alert alert-danger rounded">
+                    No permit authorization found for the specified NAS
+                </div>
+
+                <form *ngIf="userData.typePermis" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+
+                        <label for="nas">NAS</label>
+                        <input type="text" class="form-control" id="nas" value="{{userData.numeroAssuranceSocial}}" readonly>
+
+                        <label for="nom">First name</label>
+                        <input type="text" class="form-control" id="nom" value="{{userData.nom}}" readonly>
+
+                        <label for="prenom">Last name</label>
+                        <input type="text" class="form-control" id="prenom" value="{{userData.prenom}}" readonly>
+
+                        <label for="sexe">Sex</label>
+                        <input type="text" class="form-control" id="sexe" value="{{userData.sexe}}" readonly>
+
+                        <label for="age">Age</label>
+                        <input type="text" class="form-control" id="age" value="{{userData.age}}" readonly>
+
+                        <label for="typePermis">Permit type</label>
+                        <input type="text" class="form-control" id="typePermis" value="{{userData.typePermis}}" readonly>
+
+                        <label for="courriel">Email address</label>
+                        <input type="email" class="form-control" id="courriel" placeholder="myEmail@abc.com" formControlName="courriel" required>
+
+                        <label for="numeroTelephone">Phone number</label>
+                        <input type="text" class="form-control" id="numeroTelephone" placeholder="123-456-7890" formControlName="numeroTelephone" required>
+
+                        <label for="villeResidence">Town of residence</label>
+                        <input type="text" class="form-control" id="villeResidence" placeholder="Enter your town of residence" formControlName="villeResidence" required>
+
+                        <label for="login">Login</label>
+                        <input type="text" class="form-control" id="login" placeholder="Username you wish to use for login" formControlName="login" required>
+
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password you wish to use for login" formControlName="password" required>
+
+                    </div>
+
+                    <div class="container">
+                        <div class="row mb-3">
+
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary">Finish registration</button>
+                            </div>
+                        </div>
+                        
+                        <app-error-message></app-error-message>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

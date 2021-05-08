@@ -1,0 +1,16 @@
+<div *ngIf="valid != null" class="container border p-3 rounded">
+    <div class="row align-items-center">
+        <div class="col">
+            <div *ngIf="valid">
+                <img src="assets/green_check_mark.jpg" class="img-thumbnail"/>
+            </div>
+            <div *ngIf="!valid">
+                <img src="assets/red_cross_mark.jpg" class="img-thumbnail"/>
+            </div>
+        </div>
+        <div class="col">
+            <h1 *ngIf="valid">Valid</h1>
+            <h1 *ngIf="!valid">Invalid</h1>
+        </div>
+    </div>
+</div>
