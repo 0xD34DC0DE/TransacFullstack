@@ -1,0 +1,2 @@
+insert into citoyen (id, login, password, age, category_age, citoyen_type, courriel, nom, numero_assurance_social, numero_telephone, prenom, sexe, ville_residence, dtype) values (null, 'test', 'test', 19, 2, 0, 'test@gmail.com', 'Testing', '123456789', '123-123-1234',  'Account', 'M', 'Somewhere town', 'Citoyen')
+insert into permis (id, categorie_age, citoyen_id, permis_hash, date_creation, type_permis, dtype) values (null, 2, 1, 'f1234d75178d892a133a410355a5a990cf75d2f33eba25d575943d4df632f3a4', '2021-04-09 17:27:05.038', 1,  'PERMIS_TEST')

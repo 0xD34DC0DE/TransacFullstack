@@ -48,3 +48,4 @@ insert into citoyen (numero_assurance_social, nom, prenom, sexe, age, type_permi
 insert into citoyen (numero_assurance_social, nom, prenom, sexe, age, type_permis) values ('348172659', 'Dessent', 'Batsheva', 'M', 95, null);
 insert into citoyen (numero_assurance_social, nom, prenom, sexe, age, type_permis) values ('184637241', 'Ricardon', 'Sigfried', 'F', 33, 1);
 insert into citoyen (numero_assurance_social, nom, prenom, sexe, age, type_permis) values ('136966466', 'Sollis', 'Seward', 'M', 60, null);
+insert into citoyen (numero_assurance_social, nom, prenom, sexe, age, type_permis) values ('123456789', 'Account', 'Testing', 'M', 19, null);
