@@ -5,7 +5,6 @@ import com.tp2.model.Permis;
 import com.tp2.model.PermisTest;
 import com.tp2.model.web.response.PermisData;
 import com.tp2.model.web.response.PermisValidityData;
-import com.tp2.model.web.response.UserData;
 import com.tp2.service.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

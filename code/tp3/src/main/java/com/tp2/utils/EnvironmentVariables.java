@@ -2,7 +2,8 @@ package com.tp2.utils;
 
 public class EnvironmentVariables {
 
-    public static final String HOST_URL = "http://ec2-35-182-16-246.ca-central-1.compute.amazonaws.com:4200";
+    //public static final String HOST_URL = "http://ec2-35-182-16-246.ca-central-1.compute.amazonaws.com:4200";
+    public static final String HOST_URL = "http://192.168.0.42:4200";
 
     // QR code
     public static final String QR_URL = HOST_URL + "/permis/verify/";
