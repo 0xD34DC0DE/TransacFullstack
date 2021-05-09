@@ -5,6 +5,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import com.tp2.utils.EnvironmentVariables;
 import org.springframework.stereotype.Service;
 
 import javax.mail.util.ByteArrayDataSource;
@@ -15,16 +16,11 @@ import java.util.Base64;
 @Service
 public class QRService {
 
-    private static final int width = 300;
-    private static final int height = 300;
-    private static final String format = "PNG";
-    private static final String mimeType = "image/png";
-
     public ByteArrayDataSource QRCodeDataSource(String data) throws IOException, WriterException {
         ByteArrayOutputStream byteArrayOutputStream = getMatrixByteArrayOutputStream(data);
         byteArrayOutputStream.close();
 
-        return new ByteArrayDataSource(byteArrayOutputStream.toByteArray(), mimeType);
+        return new ByteArrayDataSource(byteArrayOutputStream.toByteArray(), EnvironmentVariables.QR_MIME_TYPE);
     }
 
     //data:image/png;base64,
@@ -39,10 +35,10 @@ public class QRService {
 
     private ByteArrayOutputStream getMatrixByteArrayOutputStream(String data) throws WriterException, IOException {
         QRCodeWriter qr = new QRCodeWriter();
-        BitMatrix bitMatrix = qr.encode(data, BarcodeFormat.QR_CODE, width, height);
+        BitMatrix bitMatrix = qr.encode(data, BarcodeFormat.QR_CODE, EnvironmentVariables.QR_WIDTH, EnvironmentVariables.QR_HEIGHT);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        MatrixToImageWriter.writeToStream(bitMatrix, format, byteArrayOutputStream);
+        MatrixToImageWriter.writeToStream(bitMatrix, EnvironmentVariables.QR_FORMAT, byteArrayOutputStream);
         return byteArrayOutputStream;
     }
 }

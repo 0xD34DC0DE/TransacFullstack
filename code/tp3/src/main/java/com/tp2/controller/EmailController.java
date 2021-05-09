@@ -25,7 +25,7 @@ public class EmailController {
     PermisService permisService;
 
     @GetMapping("/send/image/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity<EmailSendResult> sendImageMail(@PathVariable String nas) {
 
         Citoyen citoyen = citoyenService.getCitoyenByNumeroAssuranceSocial(nas);
@@ -46,7 +46,7 @@ public class EmailController {
     }
 
     @GetMapping("/send/pdf/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity<EmailSendResult> sendPdfMail(@PathVariable String nas) {
 
         Citoyen citoyen = citoyenService.getCitoyenByNumeroAssuranceSocial(nas);

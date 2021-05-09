@@ -241,12 +241,12 @@ class TestTp2Services {
         });
 
         // Test for non existant login with correct password
-        assertDoesNotThrow(() -> {
+        assertThrows(Exception.class, () -> {
             citoyenService.login("NON_EXISTENT", citoyen1.getPassword());
         });
 
         // Test for existent login with incorrect password
-        assertDoesNotThrow(() -> {
+        assertThrows(Exception.class, () -> {
             citoyenService.login(citoyen1.getLogin(), "INVALID_PASSWORD");
         });
 

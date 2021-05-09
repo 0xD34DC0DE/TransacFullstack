@@ -19,7 +19,7 @@ import java.io.IOException;
 public class PermisController extends ControllerHelper {
 
     @PostMapping("/renew/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity renewPermis(@PathVariable String nas, @RequestParam(required = false) Permis.PermisType type) {
 
         if(type == null)
@@ -57,7 +57,7 @@ public class PermisController extends ControllerHelper {
     }
 
     @GetMapping("/get/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity getPermisByNumeroAssuranceSocial(@PathVariable String nas) {
 
         Citoyen citoyen = citoyenService.getCitoyenByNumeroAssuranceSocial(nas);
@@ -76,7 +76,7 @@ public class PermisController extends ControllerHelper {
     }
 
     @GetMapping("/verify/{hash}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity isPermitValidByHash(@PathVariable String hash) {
         try {
             return new ResponseEntity<>(new PermisValidityData(permisService.isPermisValidByHash(hash)), HttpStatus.OK);

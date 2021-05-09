@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class UserController extends ControllerHelper {
 
     @GetMapping("/minister/citoyen/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity<MinisterData> getCitoyenMinister(@PathVariable String nas) {
         MinisterData citoyenMinisterData = citoyenService.getCitoyenMinisterData(nas);
         if(citoyenMinisterData == null)
@@ -33,7 +33,7 @@ public class UserController extends ControllerHelper {
     }
 
     @PostMapping(path = "/register/citoyen", consumes = "application/json", produces = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity registerCitoyen(@RequestBody CitoyenRegisteringData citoyenRegisteringData) {
 
         MinisterData ministerData = citoyenService.getCitoyenMinisterData(citoyenRegisteringData.getNumeroAssuranceSocial());
@@ -75,7 +75,7 @@ public class UserController extends ControllerHelper {
     }
 
     @PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity login(@RequestBody Credentials credentials) {
         try {
             UserData userData = new UserData(citoyenService.login(credentials.getLogin(), credentials.getPassword()));
@@ -88,7 +88,7 @@ public class UserController extends ControllerHelper {
     }
 
     @GetMapping("/enfant/getChildrenOf/{nas}")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity getEnfantsNASFromCitoyen(@PathVariable String nas) {
 
         List<Enfant> enfants;
@@ -105,7 +105,7 @@ public class UserController extends ControllerHelper {
     }
 
     @PostMapping(path = "/register/enfant", consumes = "application/json", produces = "application/json")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin
     private ResponseEntity registerEnfant(@RequestBody EnfantRegisterData enfantRegisterData) {
         Citoyen parent = citoyenService.getCitoyenByNumeroAssuranceSocial(enfantRegisterData.getParentNas());
         if(parent == null)

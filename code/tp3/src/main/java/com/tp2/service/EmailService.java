@@ -7,6 +7,7 @@ import com.tp2.service.exception.HashingErrorException;
 import com.tp2.service.exception.NullEmailException;
 import com.tp2.service.exception.NullHashException;
 import com.tp2.service.exception.NullPermisException;
+import com.tp2.utils.EnvironmentVariables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,6 @@ import java.io.IOException;
 
 @Service
 public class EmailService {
-
-    private final String subject = "QR code covid";
-    private final String body = "Voici votre code qr dans le format choisit";
-    private final String QR_URL = "http://localhost:4200/permis/verify/";
 
     @Autowired
     private JavaMailSender mailSender;
@@ -45,7 +42,12 @@ public class EmailService {
             throw new NullHashException();
         }
 
-        new QRMail(mailSender, email, subject, body, qrService, QR_URL + permis.getHash()).send();
+        new QRMail(mailSender,
+                email,
+                EnvironmentVariables.EMAIL_SUBJECT,
+                EnvironmentVariables.EMAIL_BODY,
+                qrService,
+                EnvironmentVariables.QR_URL + permis.getHash()).send();
     }
 
     public void SendPDFQRImageMail(@NotNull Permis permis, @NotNull String email) throws Exception {
@@ -62,7 +64,13 @@ public class EmailService {
             throw new NullHashException();
         }
 
-        new PDFMail(mailSender, email, subject, body, qrService, pdfService, QR_URL + permis.getHash()).send();
+        new PDFMail(mailSender,
+                email,
+                EnvironmentVariables.EMAIL_SUBJECT,
+                EnvironmentVariables.EMAIL_BODY,
+                qrService,
+                pdfService,
+                EnvironmentVariables.QR_URL + permis.getHash()).send();
     }
 
 

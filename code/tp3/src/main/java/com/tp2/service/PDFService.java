@@ -7,6 +7,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
+import com.tp2.utils.EnvironmentVariables;
 import org.springframework.stereotype.Service;
 
 import javax.mail.util.ByteArrayDataSource;
@@ -15,8 +16,6 @@ import java.io.IOException;
 
 @Service
 public class PDFService {
-
-    private final String mimeType = "application/pdf";
 
     public ByteArrayDataSource PDFQRDataSource(QRService qrService, String data) throws IOException, WriterException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -37,7 +36,7 @@ public class PDFService {
 
         document.close();
 
-        return new ByteArrayDataSource(byteArrayOutputStream.toByteArray(), mimeType);
+        return new ByteArrayDataSource(byteArrayOutputStream.toByteArray(), EnvironmentVariables.EMAIL_PDF_MIME_TYPE);
     }
 
 }

@@ -12,6 +12,7 @@ import com.tp2.service.exception.HashingErrorException;
 import com.tp2.service.exception.InvalidPermisRequestException;
 import com.tp2.service.exception.NonexistentUserException;
 import com.tp2.service.exception.NullUserException;
+import com.tp2.utils.EnvironmentVariables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,6 @@ import java.io.IOException;
 import java.util.Date;
 
 public class ControllerHelper {
-
-    private final String QR_URL = "http://localhost:4200/permis/verify/";
 
     @Autowired
     CitoyenService citoyenService;
@@ -40,7 +39,7 @@ public class ControllerHelper {
         String codeQRBase64;
 
         try {
-            codeQRBase64 = qrService.base64QRImage(QR_URL + permis.getPermisHash());
+            codeQRBase64 = qrService.base64QRImage(EnvironmentVariables.QR_URL + permis.getPermisHash());
         } catch (IOException | WriterException e) {
             return null;
         }
