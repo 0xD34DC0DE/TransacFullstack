@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Permit test creation</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-group" action="#" th:action="@{/permits/create}" th:object="${permit}" method="post">
+
+        <div class="form-group">
+            <label class="row-sm-10" for="typePermis">Permit type</label>
+            <input class="form-control mt-2" type="text" th:field="*{typePermis}" id="typePermis" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="citoyen">Citoyen ID</label>
+            <input class="form-control mt-2" type="text" th:field="*{citoyen}" id="citoyen" placeholder="0">
+            <span th:if="${#fields.hasErrors('citoyen')}" th:errors="*{citoyen}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="dateCreationHTML">Date creation</label>
+            <input class="form-control mt-2" type="date" th:field="*{dateCreationHTML}" id="dateCreationHTML">
+            <span th:if="${#fields.hasErrors('dateCreationHTML')}" th:errors="*{dateCreationHTML}"></span>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Create test permit">
+    </form>
+</div>
+</body>
+</html>

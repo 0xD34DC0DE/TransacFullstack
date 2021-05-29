@@ -1,0 +1,42 @@
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" type="text/css" media="screen"/>
+    <link th:href="@{/webjars/font-awesome/5.15.2/css/all.css}" rel="stylesheet" type="text/css" media="screen"/>
+</head>
+<body>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand glyphicon glyphicon-home" href="#" th:href="@{/}"></a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{/citizens/edit}">Edit citizens</a></li>
+                    <li><a th:href="@{/citizens/add}">Create citizen</a></li>
+                    <li><a th:href="@{/permits/edit}">Edit permits</a></li>
+                    <li><a th:href="@{/permits/add}">Create permit</a></li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="row text-center">
+                <div class="row mt-2">
+                    <h2>Permit management administrative application</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <img src="../../static/images/qr_vaccin.png" width="20%" th:src="@{/images/qr_vaccin.png}"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

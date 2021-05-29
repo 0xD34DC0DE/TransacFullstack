@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Permit editing</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Hash</th>
+            <th scope="col">Age category</th>
+            <th scope="col">Citizen ID</th>
+            <th scope="col">Permit type</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="permit : ${permits}">
+            <th scope="col" th:text="${permit.id}">0</th>
+            <th scope="col" th:text="${permit.permisHash}">af3fb54cee345...</th>
+            <th scope="col" th:text="${permit.categorieAge}">ENFANT</th>
+            <th scope="col" th:text="${permit.citoyen.id}">0</th>
+            <th scope="col" th:text="${permit.typePermis}">VACCIN</th>
+            <th>
+                <a th:href="@{/permits/edit/{id}(id=${permit.id})}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+            </th>
+            <th>
+                <a th:href="@{/permits/delete/{id}(id=${permit.id})}" class="btn btn-danger fas fa-trash-alt"></a>
+            </th>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,15 +1,17 @@
-package com.tp2.model;
+package com.tp4.admin.model;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @MappedSuperclass
+@DynamicUpdate
 public class User implements Serializable {
 
     @Id
@@ -17,7 +19,7 @@ public class User implements Serializable {
     private Integer id;
 
     @NotNull
-    @Column(unique = true)
+    //@Column(unique = true, updatable = true)
     private String login;
 
     @NotNull

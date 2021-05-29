@@ -11,6 +11,7 @@ import com.tp2.model.web.response.*;
 import com.tp2.service.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -39,6 +40,9 @@ public class UserController extends ControllerHelper {
         MinisterData ministerData = citoyenService.getCitoyenMinisterData(citoyenRegisteringData.getNumeroAssuranceSocial());
         if(ministerData == null)
             return new ResponseEntity<>(UserData.asErrorMessage("Error while trying to retrieve data from minister"), HttpStatus.OK);
+
+        if(ministerData.getTypePermis() == null)
+            return new ResponseEntity<>(UserData.asErrorMessage("No permit authorization found for the specified NAS"), HttpStatus.OK);
 
         Citoyen newCitoyen = new Citoyen(citoyenRegisteringData.getNumeroAssuranceSocial(),
                 citoyenRegisteringData.getLogin(),
@@ -163,7 +167,8 @@ public class UserController extends ControllerHelper {
         return new ResponseEntity<>(new UserData(createdCitoyen), HttpStatus.OK);
     }
 
-    private boolean cancelAccountCreation(String nas) {
+    @Transactional
+    boolean cancelAccountCreation(String nas) {
         return citoyenService.deleteCitoyenByNumeroAssuranceSocial(nas) > 0;
     }
 

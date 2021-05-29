@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Citizen editing</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">NAS</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone #</th>
+                    <th scope="col">Town of residence</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="citizen : ${citizens}">
+                    <th scope="col" th:text="${citizen.id}">0</th>
+                    <th scope="col" th:text="${citizen.numeroAssuranceSocial}">123456789</th>
+                    <th scope="col" th:text="${citizen.nom}">John</th>
+                    <th scope="col" th:text="${citizen.prenom}">Doe</th>
+                    <th scope="col" th:text="${citizen.sexe}">M</th>
+                    <th scope="col" th:text="${citizen.age}">24</th>
+                    <th scope="col" th:text="${citizen.courriel}">JohnDoe@gmail.com</th>
+                    <th scope="col" th:text="${citizen.numeroTelephone}">123-123-1234</th>
+                    <th scope="col" th:text="${citizen.villeResidence}">Planet earth?</th>
+                    <th>
+                        <a th:href="@{/citizens/edit/{nas}(nas=${citizen.numeroAssuranceSocial})}" class="btn btn-success fas fa-edit"></a>
+                    </th>
+                    <th>
+                        <a th:href="@{/citizens/delete/{nas}(nas=${citizen.numeroAssuranceSocial})}" class="btn btn-danger fas fa-trash-alt"></a>
+                    </th>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

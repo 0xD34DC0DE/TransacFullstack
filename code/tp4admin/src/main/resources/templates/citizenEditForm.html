@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Citizen editing</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-group" action="#" th:action="@{/citizens/update}" th:object="${citizen}" method="post">
+
+        <div class="form-group">
+            <label class="row-sm-10" for="numeroAssuranceSocial">NAS</label>
+            <input class="form-control mt-2" type="text" th:field="*{numeroAssuranceSocial}" id="numeroAssuranceSocial" placeholder="000000000" readonly>
+            <span th:if="${#fields.hasErrors('numeroAssuranceSocial')}" th:errors="*{numeroAssuranceSocial}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="nom">Last name</label>
+            <input class="form-control mt-2" type="text" th:field="*{nom}" id="nom" placeholder="Last name">
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="prenom">First name</label>
+            <input class="form-control" type="text" th:field="*{prenom}" id="prenom" placeholder="First name">
+            <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="sexe">Sex</label>
+            <input class="form-control" type="text" th:field="*{sexe}" id="sexe" placeholder="M">
+            <span th:if="${#fields.hasErrors('sexe')}" th:errors="*{sexe}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="age">Age</label>
+            <input class="form-control" type="text" th:field="*{age}" id="age" placeholder="0">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="courriel">Email</label>
+            <input class="form-control" type="text" th:field="*{courriel}" id="courriel" placeholder="abc@xyz.com">
+            <span th:if="${#fields.hasErrors('courriel')}" th:errors="*{courriel}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="numeroTelephone">Phone number</label>
+            <input class="form-control" type="text" th:field="*{numeroTelephone}" id="numeroTelephone" placeholder="000-000-0000">
+            <span th:if="${#fields.hasErrors('numeroTelephone')}" th:errors="*{numeroTelephone}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="villeResidence">Town of residence</label>
+            <input class="form-control" type="text" th:field="*{villeResidence}" id="villeResidence" placeholder="Name">
+            <span th:if="${#fields.hasErrors('villeResidence')}" th:errors="*{villeResidence}"></span>
+        </div>
+
+        <input class="form-control" type="hidden" th:field="*{categoryAge}" id="categoryAge" hidden readonly>
+        <input class="form-control" type="hidden" th:field="*{citoyenType}" id="citoyenType" hidden readonly>
+        <input class="form-control" type="hidden" th:field="*{login}" id="login" hidden readonly>
+        <input class="form-control" type="hidden" th:field="*{password}" id="password" hidden readonly>
+        <input class="form-control" type="hidden" th:field="*{id}" id="id" hidden readonly>
+
+        <input class="btn btn-primary" type="submit" value="Update citizen">
+    </form>
+</div>
+</body>
+</html>

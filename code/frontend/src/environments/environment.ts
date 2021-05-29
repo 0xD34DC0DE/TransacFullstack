@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://ec2-35-182-16-246.ca-central-1.compute.amazonaws.com:9090/"
+  apiUrl: "http://192.168.0.42:9090/"
+  //apiUrl: "http://ec2-35-182-16-246.ca-central-1.compute.amazonaws.com:9090/"
 };
 
 /*

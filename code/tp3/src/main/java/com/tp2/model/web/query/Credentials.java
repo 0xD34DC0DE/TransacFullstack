@@ -6,8 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Credentials {
    String login;
    String password;
+
+   public Credentials(String login, String password) {
+      this.login = login;
+      this.password = password;
+   }
 }

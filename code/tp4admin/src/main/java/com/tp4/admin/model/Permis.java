@@ -1,19 +1,15 @@
-package com.tp2.model;
+package com.tp4.admin.model;
 
-import com.tp2.service.exception.HashingErrorException;
-import com.tp2.utils.HashUtil;
+import com.tp4.admin.utils.HashUtils;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
 import java.io.Serializable;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -45,22 +41,31 @@ public class Permis implements Serializable {
         this.typePermis = PermisType.VACCIN;
     }
 
+    public Permis() {
+        this.typePermis = PermisType.VACCIN;
+    }
+
+    @PrePersist
+    public void setAutomaticFields() {
+        this.categorieAge = citoyen.getCategoryAge();
+    }
+
     public boolean canBeHashed() {
         return this.id != null && this.citoyen.getId() != null;
     }
 
-    private String createHash() throws IOException, HashingErrorException {
+    private String createHash() throws Exception {
         if (canBeHashed()) {
-            return HashUtil.Hash(id.toString(), citoyen.getId().toString());
+            return HashUtils.Hash(id.toString(), citoyen.getId().toString());
         }
-        throw new HashingErrorException();
+        throw new Exception("Could not hash permit");
     }
 
-    public void generateHash() throws IOException, HashingErrorException {
+    public void generateHash() throws Exception {
         this.permisHash = createHash();
     }
 
-    public String getHash() throws IOException, HashingErrorException {
+    public String getHash() throws Exception {
         return createHash();
     }
 

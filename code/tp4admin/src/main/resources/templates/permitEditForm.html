@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Permit editing</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-group" action="#" th:action="@{/permits/update}" th:object="${permit}" method="post">
+
+        <div class="form-group">
+            <label class="row-sm-10" for="id">ID</label>
+            <input class="form-control mt-2" type="text" th:field="*{id}" id="id" placeholder="0" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="typePermis">Permit type</label>
+            <input class="form-control mt-2" type="text" th:field="*{typePermis}" id="typePermis" placeholder="" readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="permisHash">Permit hash</label>
+            <input class="form-control mt-2" type="text" th:field="*{permisHash}" id="permisHash" placeholder="af3fb54cee345..." readonly>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="citoyen">Citoyen ID</label>
+            <input class="form-control mt-2" type="text" th:field="*{citoyen}" id="citoyen" placeholder="0">
+            <span th:if="${#fields.hasErrors('citoyen')}" th:errors="*{citoyen}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="categorieAge">Age category</label>
+            <input class="form-control mt-2" type="text" th:field="*{categorieAge}" id="categorieAge" placeholder="ENFANT">
+            <span th:if="${#fields.hasErrors('categorieAge')}" th:errors="*{categorieAge}"></span>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Update permit">
+    </form>
+</div>
+</body>
+</html>

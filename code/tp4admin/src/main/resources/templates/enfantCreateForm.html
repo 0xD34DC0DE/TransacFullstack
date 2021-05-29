@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Citizen creation</title>
+    <th:block th:include="layout/header"/>
+</head>
+<body>
+<div class="container">
+    <form class="form-group" action="#" th:action="@{/citizens/addChild}" th:object="${citizen}" method="post">
+
+        <div class="form-group">
+            <label class="row-sm-10" for="login">Login</label>
+            <input class="form-control mt-2" type="text" th:field="*{login}" id="login" placeholder="Login">
+            <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="password">Password</label>
+            <input class="form-control mt-2" type="text" th:field="*{password}" id="password" placeholder="*********">
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="numeroAssuranceSocial">NAS</label>
+            <input class="form-control mt-2" type="text" th:field="*{numeroAssuranceSocial}" id="numeroAssuranceSocial" placeholder="000000000">
+            <span th:if="${#fields.hasErrors('numeroAssuranceSocial')}" th:errors="*{numeroAssuranceSocial}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="nom">Last name</label>
+            <input class="form-control mt-2" type="text" th:field="*{nom}" id="nom" placeholder="Last name">
+            <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="prenom">First name</label>
+            <input class="form-control" type="text" th:field="*{prenom}" id="prenom" placeholder="First name">
+            <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="sexe">Sex</label>
+            <input class="form-control" type="text" th:field="*{sexe}" id="sexe" placeholder="M">
+            <span th:if="${#fields.hasErrors('sexe')}" th:errors="*{sexe}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="age">Age</label>
+            <input class="form-control" type="text" th:field="*{age}" id="age" placeholder="0">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="courriel">Email</label>
+            <input class="form-control" type="text" th:field="*{courriel}" id="courriel" placeholder="abc@xyz.com">
+            <span th:if="${#fields.hasErrors('courriel')}" th:errors="*{courriel}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="numeroTelephone">Phone number</label>
+            <input class="form-control" type="text" th:field="*{numeroTelephone}" id="numeroTelephone" placeholder="000-000-0000">
+            <span th:if="${#fields.hasErrors('numeroTelephone')}" th:errors="*{numeroTelephone}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="villeResidence">Town of residence</label>
+            <input class="form-control" type="text" th:field="*{villeResidence}" id="villeResidence" placeholder="Town">
+            <span th:if="${#fields.hasErrors('villeResidence')}" th:errors="*{villeResidence}"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="row-sm-10" for="parent">Parent ID</label>
+            <input class="form-control" type="text" th:field="*{parent}" id="parent" placeholder="">
+            <span th:if="${#fields.hasErrors('parent')}" th:errors="*{parent}"></span>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="Create child">
+    </form>
+</div>
+</body>
+</html>
